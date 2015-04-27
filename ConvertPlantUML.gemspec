@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.email	= ['nathan@nathantalewis.com']
   s.summary	= 'Command line tool to convert PlantUML files'
   s.description	= 'ConvertPlantUML allows you to convert your PlantUML files to SVG, PNG, or Ascii using a remote server of your choice'
-  s.files	= ['{vendor}/plantuml-encode64.rb']
+  s.files	= ['{vendor}/plantuml-encode64.rb', '{bin}/ConvertPlantUml.rb']
   s.executables	<< 'ConvertPlantUML'
   s.license	= 'Apache 2.0'
 end
