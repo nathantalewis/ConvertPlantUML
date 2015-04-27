@@ -1,9 +1,8 @@
 #!/usr/bin/env ruby
 require 'optparse'
-#require 'optparse/uri'
 require 'ostruct'
 require 'open-uri'
-require_relative 'vendor/plantuml-encode64'
+require 'plantuml-encode64'
 
 class ConvertPlantUML
   attr_reader :options
