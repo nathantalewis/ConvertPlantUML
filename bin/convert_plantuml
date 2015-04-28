@@ -70,7 +70,7 @@ class ConvertPlantUML
     self
   end
 
-  #TODO: Add ensures to make sure the files are closed
+  #TODO: Add 'ensures' to make sure the files are closed
   def convert(type: @options.type, server: @options.serverURI, input: @options.inputURI, output: @options.outputFilename)
     $stderr.puts "Reading input file... #{input}" if @options.verbose
     inputFile = if input then open(input) else $stdin end
@@ -88,8 +88,6 @@ class ConvertPlantUML
   end
 end
 
-if __FILE__ == $0
-  converter = ConvertPlantUML.new.parse(ARGV)
-  converter.convert
-end
+converter = ConvertPlantUML.new.parse(ARGV)
+converter.convert
 
