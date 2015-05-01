@@ -1,9 +1,9 @@
 # coding: utf-8
 Gem::Specification.new do |s|
   s.name	= 'convert_plantuml'
-  s.version	= '1.1.1'
+  s.version	= '1.1.2'
   s.platform	= Gem::Platform::RUBY
-  s.date	= '2015-04-30'
+  s.date	= '2015-05-01'
   s.author	= 'Nathan T.A. Lewis'
   s.email	= 'nathan@nathantalewis.com'
   s.summary	= 'Command line tool to convert PlantUML files'
@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
     vendor/plantuml-encode64.rb
     bin/convert_plantuml
   )
-  s.require_paths = %w('lib', 'vendor')
+  s.require_paths = %w(lib vendor)
   s.executables	<< 'convert_plantuml'
   s.license	= 'Apache 2.0'
 end
