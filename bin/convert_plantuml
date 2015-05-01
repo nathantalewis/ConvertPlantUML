@@ -2,8 +2,7 @@
 require 'optparse'
 require 'convert_plantuml'
 
-
-#TODO: Add support for HTTP headers for input and server requests
+# TODO: Add support for HTTP headers for input and server requests
 #
 # Return a structure describing the options.
 #
@@ -12,48 +11,51 @@ def parse(args)
   opt_parser = OptionParser.new do |opts|
     opts.banner = "Usage: #{__FILE__} [options]"
 
-    opts.separator ""
-    opts.separator "Specific options:"
+    opts.separator ''
+    opts.separator 'Specific options:'
 
-    opts.on("-i", "--input [URI]", #URI,
-            "The source uri for your PlantUML diagram. If ommitted, STDIN will be used.") do |inputURI|
+    opts.on('-i', '--input [URI]',
+            'The source uri for your PlantUML diagram. '\
+            'If ommitted, STDIN will be used.') do |inputURI|
       options[:input] = inputURI
     end
-    
-    opts.on("-o", "--output [FILENAME]", #URI,
-            "The destination file name for your rendered PlantUML diagram. If ommitted, STDOUT will be used.") do |outputFilename|
+
+    opts.on('o', '--output [FILENAME]',
+            'The destination file name for your rendered PlantUML diagram. '\
+            'If ommitted, STDOUT will be used.') do |outputFilename|
       options[:output] = outputFilename
     end
 
-    opts.on("-s", "--server [URI]", #URI,
-            "The server uri for rendering your PlantUML diagram. The default is http://www.plantuml.com/plantuml/.") do |serverURI|
-      options[:server] = if serverURI.end_with? '/' then serverURI + '/' else serverURI end
+    opts.on('-s', '--server [URI]',
+            'The server uri for rendering your PlantUML diagram. '\
+            'The default is http://www.plantuml.com/plantuml/.') do |serverURI|
+      options[:server] = (serverURI.end_with? '/') ? serverURI + '/' : serverURI
     end
 
-    opts.on("-t", "--type [TYPE]", ['png', 'svg', 'txt'],
-            "The output type (png, svg, txt). The default is png.") do |t|
+    opts.on('-t', '--type [TYPE]', %w(png svg txt),
+            'The output type (png, svg, txt). The default is png.') do |t|
       if t
         options[:type] = t
       else
-        puts "ERROR: Unknown type."
+        puts 'ERROR: Unknown type.'
         exit 1
       end
     end
 
-    opts.on("-v", "--verbose", "Run verbosely") do |v|
+    opts.on('-v', '--verbose', 'Run verbosely') do |v|
       options[:verbose] = v
     end
 
-    opts.on_tail("-h", "--help", "Show this message") do
+    opts.on_tail('-h', '--help', 'Show this message') do
       puts opts
       exit
     end
 
     # TODO: Add version
-    #opts.on_tail("-V", "--version", "Show version") do
-    #  puts ::Version.join('.')
-    #  exit
-    #end
+    # opts.on_tail("-V", "--version", "Show version") do
+    #   puts ::Version.join('.')
+    #   exit
+    # end
   end
 
   opt_parser.parse!(args)
@@ -61,4 +63,3 @@ def parse(args)
 end
 
 ConvertPlantUML.convert(parse(ARGV))
-
