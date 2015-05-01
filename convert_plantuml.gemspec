@@ -1,7 +1,7 @@
 # coding: utf-8
 Gem::Specification.new do |s|
   s.name	= 'convert_plantuml'
-  s.version	= '1.1.0'
+  s.version	= '1.1.1'
   s.platform	= Gem::Platform::RUBY
   s.date	= '2015-04-30'
   s.author	= 'Nathan T.A. Lewis'
